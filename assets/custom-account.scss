@@ -1,0 +1,387 @@
+$spMaxWidth: 768px;
+@mixin sp {
+    @media screen and (max-width: $spMaxWidth) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media print,
+    screen and (min-width: ($spMaxWidth + 1)) {
+        @content;
+    }
+}
+
+.template-customers {
+    .Form__Header {
+        .Form__Title {
+            font-size: 5rem;
+            font-family: alternate-gothic-atf, sans-serif;
+            font-weight: 600;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: 3.5px;
+            color: #222222;
+            text-transform: uppercase;
+            margin: 0;
+            @include sp {
+                font-size: 3.6rem;
+                letter-spacing: 2.5px;
+            }
+        }
+        .Form__Legend {
+            margin-top: -5px;
+        }
+    }
+    .PageHeader {
+        margin: 42px 0;
+        .SectionHeader {
+            justify-content: center;
+            flex-wrap: wrap;
+            &__Heading {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    }
+    .SectionSubHeader {
+        display: flex;
+        justify-content: space-between;
+        padding: 17px 0 0;
+        p {
+            margin: 0;
+            font-family: 'Hiragino Sans Upr W6', sans-serif;
+            font-weight: 600;
+        }
+        a {
+            font-size: 1.4rem;
+            margin: 0;
+            text-decoration: underline;
+        }
+    }
+    .PageLayout {
+        margin-top: 44px;
+        @include sp {
+            margin-top: 33px;
+        }
+    }
+    &.features--heading-small main .u-h7 {
+        font-size: 1.4rem;
+        @include sp {
+            font-size: 1.2rem;
+        }
+    }
+    .AccountAddress,
+    .Segment__ActionItem {
+        font-size: 1.4rem;
+        @include sp {
+            font-size: 1.3rem;
+        }
+    }
+    .AccountTable {
+        th {
+            opacity: .6;
+            padding-bottom: 15px;
+            @include sp {
+                padding-bottom: 13px;
+            }
+        }
+        td {
+            padding-top: 25px;
+            padding-bottom: 28px;
+            @include sp {
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
+        }
+        th,
+        td {
+            color: #222222;
+            font-size: 1.4rem;
+            letter-spacing: 0;
+            @include sp {
+                font-size: .9rem;
+            }
+        }
+    }
+    .Segment {
+        &__Title {
+            padding-bottom: 15px;
+            opacity: .6;
+            margin-bottom: 25px;
+            @include sp {
+                padding-bottom: 12px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .PageSpacingWrapper {
+        .AccountAddress {
+            line-height: 30px;
+            @include sp {
+                line-height: 26px;
+            }
+            span {
+                margin-bottom: 0;
+            }
+        }
+        .Segment__ButtonWrapper {
+            margin-top: 15px;
+            a {
+                width: 100%;
+                font-size: 1.4rem;
+                font-family: 'Hiragino Sans Upr W6', sans-serif;
+                font-weight: 600;
+                @include sp {
+                    width: auto;
+                    font-size: 1.1rem;
+                    padding: 13px 40px;
+                }
+            }
+        }
+    }
+    .Pagination {
+        margin-top: 50px;
+        margin-bottom: 40px;
+        @include sp {
+            margin-top: 30px;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.template-register {
+    .cf-field {
+        margin: 0;
+        padding: 5px 0;
+        label {
+            margin-bottom: 10px;
+        }
+        .cf-enum-field__choices {
+            input {
+                display: none !important;
+            }
+            span {
+                position: relative;
+                display: block;
+                padding-left: 25px;
+                line-height: 20px;
+                cursor: pointer;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    border: 1px solid var(--border-color);
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 5px;
+                    left: 5px;
+                    right: 0;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #222222;
+                    opacity: 0;
+                    transform: scale(.5);
+                    transition: all .2s ease-in;
+                }
+            }
+            input[type="radio"]:checked+span {
+                &::before {
+                    border-color: #222222;
+                }
+                &::after {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+    .cf-form-inner .cf-fields-container {
+        margin: 0;
+    }
+    .cf-field-container {
+        padding: 0 5px;
+        &[data-cf-field-type="dropdown"] {
+            padding: 0;
+            .cf-field {
+                margin: 0 5px;
+            }
+        }
+    }
+    [data-cf-field-type="paragraph"] {
+        padding: 5px;
+        .cf-field {
+            padding: 0;
+        }
+    }
+    .cf-form-actions {
+        margin-top: 15px !important;
+        button {
+            width: calc(50% - 0.5em) !important;
+            background: transparent!important;
+            color: #fff!important;
+            background: #222222!important;
+            border: 1px solid #222222!important;
+            border-radius: 50px !important;
+            font-family: 'Hiragino Sans Upr W3', sans-serif!important;
+            font-weight: 300!important;
+            &:hover {
+                background: transparent!important;
+                color: #222!important;
+            }
+            &:last-child {
+                margin-right: 0 !important;
+            }
+            @include sp {
+                transition: none !important;
+            }
+        }
+    }
+    .cf-field[data-cf-invalid=true]:not([data-cf-field-type=repeating_group]) {
+        border: 0 !important;
+        background: transparent !important;
+    }
+}
+
+.template-addresses {
+    .SectionHeader__ButtonWrapper {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.template-order {
+    .PageHeader {
+        margin: 56px 0 0;
+        @include sp {
+            margin-top: 47px;
+        }
+        .SectionHeader {
+            display: block;
+            &__Heading {
+                font-size: 3.2rem;
+                font-family: 'Hiragino Sans Upr W6', sans-serif;
+                font-weight: 600;
+                letter-spacing: 1px;
+                margin-bottom: 9px;
+                @include sp {
+                    font-size: 2.2rem;
+                }
+            }
+            &__Description {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 70px;
+                text-align: center;
+                @include sp {
+                    margin-bottom: 48px;
+                }
+            }
+        }
+    }
+    .Alert {
+        border: 1px solid transparent;
+        font-size: 1.4rem;
+        padding: 27px 40px;
+        margin: 0;
+        color: #222222;
+        &--error {
+            border-color: #E62222;
+            background: #FFEFEF;
+        }
+        &--success {
+            border-color: #307a07;
+        }
+        @include sp {
+            font-size: 1.2rem;
+            padding: 24px 22px;
+        }
+    }
+    .PageLayout {
+        margin-top: 38px;
+        @include sp {
+            margin-top: 26px;
+        }
+    }
+    .AccountTable {
+        td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        tbody {
+            tr {
+                &:first-child {
+                    td {
+                        padding-top: 32px;
+                        @include sp {
+                            padding-top: 20px;
+                        }
+                    }
+                }
+                &:last-child {
+                    td {
+                        padding-bottom: 30px;
+                        @include sp {
+                            padding-bottom: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        tfoot {
+            td {
+                padding-top: 25px;
+                padding-bottom: 25px;
+                @include sp {
+                    padding-top: 29px;
+                    padding-bottom: 29px;
+                }
+                &:nth-of-type(2) {
+                    color: #858585;
+                    .Text--subdued {
+                        color: #858585;
+                    }
+                }
+            }
+            tr {
+                &:last-child {
+                    td {
+                        color: #222222;
+                    }
+                }
+            }
+        }
+    }
+    .CartItem {
+        &__ImageWrapper {
+            width: 100px;
+            @include sp {
+                width: 63px;
+                min-width: 63px;
+            }
+        }
+        &__Info {
+            padding-left: 32px;
+            @include sp {
+                padding-left: 20px;
+                .CartItem__Title {
+                    font-size: .9rem;
+                }
+            }
+        }
+    }
+    .PageHeader__Back {
+        margin-bottom: 82px;
+        @include sp {
+            margin-bottom: 55px;
+        }
+    }
+}

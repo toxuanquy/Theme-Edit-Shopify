@@ -1,0 +1,380 @@
+$spMaxWidth: 640px;
+@mixin sp {
+    @media screen and (max-width: $spMaxWidth) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media print,
+    screen and (min-width: ($spMaxWidth + 1)) {
+        @content;
+    }
+}
+
+.ArticleListWrapper {
+    max-width: 100%;
+    margin: 0;
+    .Grid {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 -26.5px;
+        @media screen and (max-width: 768px) {
+            margin: 0 -15px;
+        }
+        @include sp {
+            margin: 0 -10px;
+        }
+        &__Cell {
+            width: 50%;
+            padding: 0 26.5px;
+            margin-bottom: 67px;
+            @media screen and (max-width: 768px) {
+                padding: 0 15px;
+            }
+            @include sp {
+                width: 100%;
+                padding: 0 10px;
+                margin-bottom: 38px;
+            }
+        }
+    }
+    .ArticleItem {
+        &__ImageWrapper {
+            margin-bottom: 24px;
+            @include sp {
+                margin-bottom: 15px;
+            }
+            &::before {
+                padding-bottom: 100%;
+            }
+        }
+        &__Content {
+            margin: 0;
+        }
+        &__Date {
+            font-size: 1.1rem;
+            color: #333333;
+            opacity: .6;
+            line-height: 1.5;
+            @include sp {
+                font-size: .9rem;
+            }
+        }
+        &__Category {
+            display: inline-block;
+            border: 1px solid #E0E0E0;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            padding: 0 15px;
+            line-height: 20px;
+            margin-left: 16px;
+            margin-bottom: 0;
+            @include sp {
+                font-size: 1rem;
+                line-height: 19px;
+                margin-left: 18px;
+                padding: 0 9px;
+            }
+        }
+        &__Title {
+            font-size: 1.6rem;
+            line-height: 1.5;
+            letter-spacing: 0;
+            margin-top: 9px;
+            @include sp {
+                font-size: 1.1rem;
+                margin-top: 9px;
+            }
+        }
+    }
+}
+
+.template-blog {
+    .PageHeader {
+        margin: 43px 0 50px;
+        @include pc {
+            margin: 42px 0 70px;
+        }
+        .SectionHeader {
+            display: block;
+            &__Heading {
+                span {
+                    display: block;
+                    font-family: 'Hiragino Sans Upr W3', sans-serif;
+                    font-weight: 300;
+                    font-size: 1.4rem;
+                    margin-top: -5px;
+                    letter-spacing: 0;
+                    @include sp {
+                        font-size: 1.2rem;
+                        margin-top: 1px;
+                    }
+                }
+            }
+        }
+    }
+    .Blog {
+        &__TagList {
+            margin: 0;
+            padding-top: 53px;
+            @include sp {
+                padding-top: 30px;
+                margin-right: -20px;
+                overflow-x: auto;
+                margin-left: -20px;
+                display: flex;
+                padding-left: 20px;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+            li {
+                margin: 0;
+                border-bottom: 1px solid #E6E6E6;
+                @include sp {
+                    flex: 0 0 auto;
+                }
+                a {
+                    font-size: 1.3rem;
+                    position: relative;
+                    letter-spacing: 0;
+                    padding: 0 22px 12px;
+                    &.is-active {
+                        font-family: 'Hiragino Sans Upr W6', sans-serif;
+                        font-weight: 600;
+                        &::after {
+                            display: block;
+                            content: "";
+                            width: calc(100% - 0.15em);
+                            height: 1px;
+                            background: #222;
+                            position: absolute;
+                            bottom: -1px;
+                            left: 0;
+                            width: 100%;
+                            @include sp {
+                                bottom: -2px;
+                            }
+                        }
+                    }
+                    @include sp {
+                        font-size: 1.2rem;
+                        padding: 0 13px 12px;
+                    }
+                }
+            }
+        }
+    }
+    .Pagination {
+        margin-bottom: 80px;
+        @include sp {
+            margin-bottom: 60px;
+        }
+    }
+}
+
+.template-article {
+    .Article {
+        &__Meta {
+            font-size: 1.3rem;
+            color: #333333;
+            opacity: .6;
+            letter-spacing: 0;
+            margin-bottom: 7px;
+            @include sp {
+                font-size: 1rem;
+                margin-bottom: 11px;
+            }
+        }
+        &__Title {
+            font-size: 3.2rem;
+            font-family: 'Hiragino Sans Upr W6', sans-serif;
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: 0;
+            @include sp {
+                font-size: 1.8rem;
+            }
+        }
+        &__Image {
+            &Wrapper {
+                height: 513.29px;
+                @include sp {
+                    height: 220.45px;
+                }
+            }
+            top: 0;
+            height: 513.29px;
+            @include sp {
+                height: 220.45px;
+            }
+        }
+        &__Body {
+            h1,
+            h2,
+            h3 {
+                font-family: Hiragino Sans Upr W6, sans-serif;
+                font-weight: 600;
+                line-height: 1.5;
+                letter-spacing: 0;
+            }
+            h1 {
+                font-size: 2.4rem;
+                padding-bottom: 13px;
+                margin-bottom: 25px;
+                border-bottom: 2px solid #222222;
+                margin-top: 60px;
+                @include sp {
+                    font-size: 1.5rem;
+                    margin: 34px 0 22px;
+                    padding-bottom: 15px;
+                }
+            }
+            p {
+                line-height: 32px;
+                letter-spacing: 0;
+                margin-bottom: 0;
+                @include sp {
+                    font-size: 1.2rem;
+                    line-height: 22px;
+                }
+            }
+            img {
+                margin-top: 80px;
+                margin-bottom: 15px;
+                @include sp {
+                    margin-top: 50px;
+                }
+            }
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 14px;
+                margin-top: 80px;
+                @include sp {
+                    font-size: 1.5rem;
+                    margin: 51px 0 40px;
+                }
+            }
+            h3 {
+                font-size: 1.7rem;
+                margin-bottom: 14px;
+                margin-top: 80px;
+                @include sp {
+                    font-size: 1.3rem;
+                    margin: 75px 0 10px;
+                }
+            }
+            a:not(.Button) {
+                color: #222;
+                display: inline-block;
+                margin-top: 37px;
+            }
+            table {
+                margin-top: 72px;
+                border-top: 1px solid var(--border-color);
+                white-space: initial;
+                td {
+                    font-size: 1.4rem;
+                    padding: 28px 0 20px;
+                    line-height: 28px;
+                    &:first-child {
+                        font-family: 'Hiragino Sans Upr W6', sans-serif;
+                        font-weight: 600;
+                        width: 240px;
+                        min-width: 240px;
+                        vertical-align: top;
+                        @include sp {
+                            border-bottom: 0;
+                            padding-bottom: 0;
+                        }
+                    }
+                    &:last-child {
+                        width: calc(100% - 240px);
+                        @include sp {
+                            padding: 8px 0 39px;
+                        }
+                    }
+                    @include sp {
+                        padding: 20px 0;
+                        width: 100% !important;
+                        font-size: 1.2rem;
+                        line-height: 22px;
+                        float: left;
+                    }
+                }
+            }
+            blockquote {
+                margin: 30px 0 98px;
+                padding: 35px 50px;
+                border: 0;
+                background: #F4F4F4;
+                font-size: 1.4rem;
+                @include sp {
+                    padding: 33px 35px 50px;
+                    margin-bottom: 72px;
+                }
+            }
+            ul {
+                margin-top: 52px;
+                margin-left: 18px;
+                li {
+                    a {
+                        font-size: 1.4rem;
+                        line-height: 1.5;
+                    }
+                }
+            }
+        }
+        &__Footer {
+            margin-top: 87px;
+            @include sp {
+                margin-top: 62px;
+            }
+        }
+        &__ShareButtons {
+            display: flex;
+            align-items: center;
+            span {
+                display: inline-block;
+                margin-right: 32px;
+                @include sp {
+                    font-size: 1.2rem;
+                    margin-right: 30px;
+                    position: relative;
+                    top: 3px;
+                }
+            }
+            .ShareButtons__Items {
+                font-size: 20px;
+                @include sp {
+                    font-size: 16px;
+                }
+                &:not(:last-child) {
+                    margin-right: 23px;
+                }
+            }
+        }
+        &Nav {
+            background: transparent;
+            border-top: 1px solid var(--border-color);
+            color: #222;
+            @include sp {
+                padding: 60px 0 20px;
+            }
+            .Grid__Cell {
+                margin-bottom: 40px;
+                @include sp {
+                    margin-top: 0;
+                    margin-bottom: 38px;
+                }
+            }
+            .ArticleItem__ImageWrapper {
+                margin-bottom: 29px;
+                @include sp {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
